@@ -83,7 +83,7 @@ int setMaxNumber(int currentMaxNumber) {
 
 void guessingGame(int maxNumber) {
     // Generate random number between 1 and maxNumber that the user has to guess
-    int randomNumber = rand() % maxNumber;
+    int randomNumber = (rand() % maxNumber) + 1;
 
     // Number that the user guesses
     int userGuess = 0;
