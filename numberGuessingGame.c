@@ -13,8 +13,9 @@ int main(void) {
     //  Press 1 to play a game
     //  Press 2 to change the max number
     //  Press 3 to quit
-    int selection = displayMenu(maxNumber);
+    int selection = 0;
     while (selection != 3) {
+        selection = displayMenu(maxNumber);
         switch (selection) {
             case 1: // Play game
                 break;
@@ -23,14 +24,15 @@ int main(void) {
                 printf("Max number set to %d.\n", maxNumber);
                 break;
             case 3: // Option 3: Quit
+                // Do nothing, game will quit
                 break;
         }
-        
+
         printf("\n");
-        selection = displayMenu(maxNumber);
     }
 
     printf("Thank you for playing!\n");
+    return EXIT_SUCCESS;
 }
 
 int displayMenu(int maxNumber) {
