@@ -37,12 +37,19 @@ int displayMenu() {
     printf("- Press 3 to quit\n");
 
     // Read user input
+    int option = 0;
+    while (option < 1 || option > 3) {
+        printf("Make a selection: ");
+        scanf("%d", &option);
 
-    // Check if input is valid (falls in range 1-3)
+        // Check if input is valid (falls in range 1-3)
+        if (option < 1 || option > 3) {
+            printf("Invalid option (must be between 1 and 3)\n");
+        }
+    }
 
     // Return option specified by user
-    
-    return 3; // Placeholder return
+    return option;
 }
 
 int getMaxNumber() {
