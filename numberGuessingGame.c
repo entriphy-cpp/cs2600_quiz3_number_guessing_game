@@ -19,6 +19,7 @@ int main(void) {
             case 1: // Play game
                 break;
             case 2: // Change max number
+                maxNumber = setMaxNumber(maxNumber);
                 break;
             case 3: // Option 3: Quit
                 break;
@@ -62,7 +63,7 @@ int setMaxNumber(int currentMaxNumber) {
 
         // Check if input is valid (is not negative or zero)
         if (maxNumber < 1) {
-            printf("Invalid max number (must not be negative or zero)\n");
+            printf("Invalid max number (must be positive)\n");
         }
     }
 
