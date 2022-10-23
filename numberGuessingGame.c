@@ -81,15 +81,20 @@ int setMaxNumber(int currentMaxNumber) {
 }
 
 void guessingGame(int maxNumber) {
-    // Generate random number between 1 and maxNumber
+    // Generate random number between 1 and maxNumber that the user has to guess
+    int randomNumber = rand() % maxNumber;
 
-    // Loop:
+    // Number that the user guesses
+    int userGuess = 0;
 
-    //  Get number from user
+    // Loop
+    while (userGuess != randomNumber) {
+        // Get number from user
 
-    //  Exit program if user entered 'q' (return -1)
+        // Exit program if user entered 'q' (return -1)
 
-    //  Exit loop if number equals random number
+        // Print higher/lower if number does not equal random number
 
-    //  Print higher/lower if number does not equal random number
+        // Exit loop if number equals random number
+    }
 }
