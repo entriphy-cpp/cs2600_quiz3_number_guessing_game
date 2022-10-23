@@ -22,6 +22,7 @@ int main(void) {
         selection = displayMenu(maxNumber);
         switch (selection) {
             case 1: // Play game
+                guessingGame(maxNumber);
                 break;
             case 2: // Change max number
                 maxNumber = setMaxNumber(maxNumber);
@@ -90,11 +91,20 @@ void guessingGame(int maxNumber) {
     // Loop
     while (userGuess != randomNumber) {
         // Get number from user
+        printf("Guess a number between 1 and %d: ", maxNumber);
+        scanf("%d", &userGuess);
 
         // Exit program if user entered 'q' (return -1)
+        // Bug: scanf will loop forever if q is input
 
         // Print higher/lower if number does not equal random number
+        if (userGuess < randomNumber) {
+            printf("Incorrect, try again. (Hint: The number is higher than your guess)\n");
+        } else if (userGuess > randomNumber) {
+            printf("Incorrect, try again. (Hint: The number is lower than your guess)\n");
+        }
 
         // Exit loop if number equals random number
     }
+    printf("Correct! The number to guess was %d.\n", randomNumber);
 }
