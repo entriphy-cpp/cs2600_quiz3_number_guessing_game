@@ -20,10 +20,10 @@ int main(void) {
     //  Press 3 to quit
     int selection = 0;
     while (selection != 3) {
-        selection = displayMenu(maxNumber);
+        selection = displayMenu(maxNumber); // Display menu to user and save selection
         switch (selection) {
             case 1: // Play game
-                guessingGame(maxNumber);
+                selection = guessingGame(maxNumber);
                 break;
             case 2: // Change max number
                 maxNumber = setMaxNumber(maxNumber);
@@ -92,11 +92,20 @@ int guessingGame(int maxNumber) {
     // Loop
     while (userGuess != randomNumber) {
         // Get number from user
-        printf("Guess a number between 1 and %d: ", maxNumber);
-        scanf("%d", &userGuess);
+        printf("Guess a number between 1 and %d (press 'q' to quit): ", maxNumber);
+        char userInput[30]; // Stores user input as string in case user enters 'q'; converted later to an integer
+        scanf("%s", &userInput);
 
-        // Exit program if user entered 'q' (return -1)
-        // Bug: scanf will loop forever if q is input
+        // Parse user input
+        if (userInput[0] == 'q') { // User wants to quit
+            printf("The number to guess was %d.\n", randomNumber);
+            return 3; // Will exit program
+        }
+        userGuess = atoi(userInput); // Attempt to convert string to integer
+        if (userGuess == 0) { // Invalid integer
+            printf("Invalid input.\n");
+            continue;
+        }
 
         // Print higher/lower if number does not equal random number
         if (userGuess < randomNumber) {
@@ -108,4 +117,5 @@ int guessingGame(int maxNumber) {
         // Exit loop if number equals random number
     }
     printf("Correct! The number to guess was %d.\n", randomNumber);
+    return 0;
 }
