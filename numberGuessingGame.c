@@ -10,12 +10,20 @@ int main(void) {
     //  Press 1 to play a game
     //  Press 2 to change the max number
     //  Press 3 to quit
+    int selection = displayMenu();
+    while (selection != 3) {
+        switch (selection) {
+            case 1: // Play game
+                break;
+            case 2: // Change max number
+                break;
+            case 3: // Option 3: Quit
+                break;
+        }
+        selection = displayMenu();
+    }
 
-    // Option 1: Play game
-
-    // Option 2: Change max number
-
-    // Option 3: Quit
+    printf("Thank you for playing!\n");
 }
 
 int displayMenu() {
@@ -27,7 +35,7 @@ int displayMenu() {
 
     // Return option specified by user
     
-    return 0; // Placeholder return
+    return 3; // Placeholder return
 }
 
 int getMaxNumber() {
