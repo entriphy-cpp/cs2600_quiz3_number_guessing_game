@@ -20,6 +20,7 @@ int main(void) {
                 break;
             case 2: // Change max number
                 maxNumber = setMaxNumber(maxNumber);
+                printf("Max number set to %d.\n", maxNumber);
                 break;
             case 3: // Option 3: Quit
                 break;
