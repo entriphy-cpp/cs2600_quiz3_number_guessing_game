@@ -6,6 +6,9 @@ int getMaxNumber(); // Gets max number from user
 void guessingGame(int maxNumber); // Main game loop
 
 int main(void) {
+    // Default max number
+    int maxNumber = 10;
+
     // Display menu (implement as function)
     //  Press 1 to play a game
     //  Press 2 to change the max number
@@ -28,6 +31,10 @@ int main(void) {
 
 int displayMenu() {
     // Display menu
+    printf("Options:\n");
+    printf("- Press 1 to play a game\n");
+    printf("- Press 2 to change the max number\n");
+    printf("- Press 3 to quit\n");
 
     // Read user input
 
