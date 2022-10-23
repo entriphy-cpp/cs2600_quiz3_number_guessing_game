@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int displayMenu(); // Display main menu
+int displayMenu(int maxNumber); // Display main menu
 int setMaxNumber(); // Gets max number from user and sets it
 void guessingGame(int maxNumber); // Main game loop
 
@@ -13,7 +13,7 @@ int main(void) {
     //  Press 1 to play a game
     //  Press 2 to change the max number
     //  Press 3 to quit
-    int selection = displayMenu();
+    int selection = displayMenu(maxNumber);
     while (selection != 3) {
         switch (selection) {
             case 1: // Play game
@@ -24,18 +24,18 @@ int main(void) {
             case 3: // Option 3: Quit
                 break;
         }
-        selection = displayMenu();
+        selection = displayMenu(maxNumber);
     }
 
     printf("Thank you for playing!\n");
 }
 
-int displayMenu() {
+int displayMenu(int maxNumber) {
     // Display menu
     printf("Welcome to Number Guessing Game!\n");
     printf("Options:\n");
     printf("- Press 1 to play a game\n");
-    printf("- Press 2 to change the max number\n");
+    printf("- Press 2 to change the max number (current: %d)\n", maxNumber);
     printf("- Press 3 to quit\n");
 
     // Read user input
