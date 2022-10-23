@@ -1,11 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 int displayMenu(int maxNumber); // Display main menu
 int setMaxNumber(); // Gets max number from user and sets it
 void guessingGame(int maxNumber); // Main game loop
 
 int main(void) {
+    // Set random number seed
+    srand(time(NULL));
+    
     // Default max number
     int maxNumber = 10;
 
