@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int displayMenu(); // Display main menu
-int getMaxNumber(); // Gets max number from user
+int setMaxNumber(); // Gets max number from user and sets it
 void guessingGame(int maxNumber); // Main game loop
 
 int main(void) {
@@ -31,6 +31,7 @@ int main(void) {
 
 int displayMenu() {
     // Display menu
+    printf("Welcome to Number Guessing Game!\n");
     printf("Options:\n");
     printf("- Press 1 to play a game\n");
     printf("- Press 2 to change the max number\n");
@@ -40,7 +41,7 @@ int displayMenu() {
     int option = 0;
     while (option < 1 || option > 3) {
         printf("Make a selection: ");
-        scanf("%d", &option);
+        scanf("%d", &option); // Read option from user
 
         // Check if input is valid (falls in range 1-3)
         if (option < 1 || option > 3) {
@@ -52,14 +53,21 @@ int displayMenu() {
     return option;
 }
 
-int getMaxNumber() {
+int setMaxNumber(int currentMaxNumber) {
     // Read user input
+    int maxNumber = 0;
+    while (maxNumber < 1) {
+        printf("Input the max number you want to set (current: %d): ", currentMaxNumber);
+        scanf("%d", &maxNumber); // Read max number from user
 
-    // Check if input is valid (is not negative)
+        // Check if input is valid (is not negative or zero)
+        if (maxNumber < 1) {
+            printf("Invalid max number (must not be negative or zero)\n");
+        }
+    }
 
-    // Return max number
-
-    return 0; // Placeholder return
+    // Return new max number
+    return maxNumber;
 }
 
 void guessingGame(int maxNumber) {
