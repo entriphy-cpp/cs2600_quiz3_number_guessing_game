@@ -25,6 +25,8 @@ int main(void) {
             case 3: // Option 3: Quit
                 break;
         }
+        
+        printf("\n");
         selection = displayMenu(maxNumber);
     }
 
