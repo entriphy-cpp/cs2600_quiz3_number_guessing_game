@@ -6,6 +6,7 @@
 int displayMenu(int maxNumber); // Display main menu
 int setMaxNumber(); // Gets max number from user and returns it
 int guessingGame(int maxNumber); // Main guessing game loop
+const int DEFAULT_MAX_NUMBER = 10;
 
 int main(void) {
     // Set random number seed
@@ -17,11 +18,11 @@ int main(void) {
         if (fscanf(fp, "%d", &maxNumber) != 1) {
             // Cannot read integer from file; use default max number
             printf("Could not read a valid number from max_number.txt; using default max number.\n");
-            maxNumber = 10;
+            maxNumber = DEFAULT_MAX_NUMBER;
         }
         fclose(fp); // Close file stream
     } else { // File does not exist
-        maxNumber = 10; // Set to default max number
+        maxNumber = DEFAULT_MAX_NUMBER; // Set to default max number
     }
 
     // Display menu (implement as function)
