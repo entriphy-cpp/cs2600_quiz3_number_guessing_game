@@ -6,13 +6,25 @@
 int displayMenu(int maxNumber); // Display main menu
 int setMaxNumber(); // Gets max number from user and returns it
 int guessingGame(int maxNumber); // Main guessing game loop
+const int DEFAULT_MAX_NUMBER = 10;
+const char *MAX_NUMBER_FILE = "max_number.txt";
 
 int main(void) {
     // Set random number seed
     srand(time(NULL));
-    
-    // Default max number
-    int maxNumber = 10;
+
+    int maxNumber;
+    FILE *fp = fopen(MAX_NUMBER_FILE, "r"); // Open file stream as read-only
+    if (fp != NULL) { // File exists
+        if (fscanf(fp, "%d", &maxNumber) != 1) {
+            // Cannot read integer from file; use default max number
+            printf("Could not read a valid number from %s; using default max number.\n", MAX_NUMBER_FILE);
+            maxNumber = DEFAULT_MAX_NUMBER;
+        }
+        fclose(fp); // Close file stream
+    } else { // File does not exist
+        maxNumber = DEFAULT_MAX_NUMBER; // Set to default max number
+    }
 
     // Display menu (implement as function)
     //  Press 1 to play a game
@@ -28,6 +40,17 @@ int main(void) {
             case 2: // Change max number
                 maxNumber = setMaxNumber(maxNumber);
                 printf("Max number set to %d.\n", maxNumber);
+
+                // Save max number
+                fp = fopen(MAX_NUMBER_FILE, "w"); // Open file as write-only
+                if (fp == NULL) {
+                    printf("Could not open %s, not saving max number.\n", MAX_NUMBER_FILE);
+                } else {
+                    fprintf(fp, "%d", maxNumber); // Write max number to file
+                    fclose(fp); // Close file stream
+                    printf("Saved max number to %s.\n", MAX_NUMBER_FILE);
+                }
+
                 break;
             case 3: // Option 3: Quit
                 // Do nothing, game will quit
