@@ -14,7 +14,11 @@ int main(void) {
     int maxNumber;
     FILE *fp = fopen("max_number.txt", "r"); // Open file stream as read-only
     if (fp != NULL) { // File exists
-        fscanf(fp, "%d", &maxNumber);
+        if (fscanf(fp, "%d", &maxNumber) != 1) {
+            // Cannot read integer from file; use default max number
+            printf("Could not read a valid number from max_number.txt; using default max number.\n");
+            maxNumber = 10;
+        }
         fclose(fp); // Close file stream
     } else { // File does not exist
         maxNumber = 10; // Set to default max number
