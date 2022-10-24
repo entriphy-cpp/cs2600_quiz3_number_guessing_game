@@ -31,8 +31,12 @@ int main(void) {
 
                 // Save max number
                 fp = fopen("max_number.txt", "w"); // Open file as write-only
-                fprintf(fp, "%d", maxNumber); // Write max number to file
-                fclose(fp); // Close file stream
+                if (fp == NULL) {
+                    printf("Could not open max_number.txt, not saving max number.\n");
+                } else {
+                    fprintf(fp, "%d", maxNumber); // Write max number to file
+                    fclose(fp); // Close file stream
+                }
 
                 break;
             case 3: // Option 3: Quit
