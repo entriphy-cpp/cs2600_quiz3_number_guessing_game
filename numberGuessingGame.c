@@ -76,7 +76,11 @@ int displayMenu(int maxNumber) {
     int option = 0;
     while (option < 1 || option > 3) {
         printf("Make a selection: ");
-        scanf("%d", &option); // Read option from user
+        if (scanf("%d", &option) != 1) { // Read option from user
+            printf("Invalid number.\n"); // User entered an invalid number
+            while (getchar() != '\n'); // Clears buffer to prevent printf output from looping into scanf
+            continue;
+        }
 
         // Check if input is valid (falls in range 1-3)
         if (option < 1 || option > 3) {
@@ -92,7 +96,7 @@ int setMaxNumber(int currentMaxNumber) {
     // Read user input
     int maxNumber = 0;
     while (maxNumber < 1) {
-        while (getchar() != '\n'); // Clears buffer to prevents printf output from looping into scanf
+        while (getchar() != '\n'); // Clears buffer to prevent printf output from looping into scanf
         printf("Input the max number you want to set (current: %d): ", currentMaxNumber);
         if (scanf("%d", &maxNumber) != 1) { // Read max number from user
             printf("Invalid number.\n"); // User did not enter a number
