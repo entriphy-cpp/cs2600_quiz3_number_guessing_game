@@ -47,6 +47,7 @@ int main(void) {
                 } else {
                     fprintf(fp, "%d", maxNumber); // Write max number to file
                     fclose(fp); // Close file stream
+                    printf("Saved max number to max_number.txt.\n");
                 }
 
                 break;
