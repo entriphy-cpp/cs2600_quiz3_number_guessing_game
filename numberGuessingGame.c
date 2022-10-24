@@ -10,9 +10,9 @@ int guessingGame(int maxNumber); // Main guessing game loop
 int main(void) {
     // Set random number seed
     srand(time(NULL));
-    
-    // Default max number
+
     int maxNumber = 10;
+    FILE *fp;
 
     // Display menu (implement as function)
     //  Press 1 to play a game
@@ -28,6 +28,12 @@ int main(void) {
             case 2: // Change max number
                 maxNumber = setMaxNumber(maxNumber);
                 printf("Max number set to %d.\n", maxNumber);
+
+                // Save max number
+                fp = fopen("max_number.txt", "w"); // Open file as write-only
+                fprintf(fp, "%d", maxNumber); // Write max number to file
+                fclose(fp); // Close file stream
+
                 break;
             case 3: // Option 3: Quit
                 // Do nothing, game will quit
