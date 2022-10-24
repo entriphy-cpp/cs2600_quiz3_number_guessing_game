@@ -4,8 +4,8 @@
 #include <time.h>
 
 int displayMenu(int maxNumber); // Display main menu
-int setMaxNumber(); // Gets max number from user and sets it
-int guessingGame(int maxNumber); // Main game loop
+int setMaxNumber(); // Gets max number from user and returns it
+int guessingGame(int maxNumber); // Main guessing game loop
 
 int main(void) {
     // Set random number seed
@@ -69,10 +69,14 @@ int setMaxNumber(int currentMaxNumber) {
     // Read user input
     int maxNumber = 0;
     while (maxNumber < 1) {
+        while (getchar() != '\n'); // Clears buffer to prevents printf output from looping into scanf
         printf("Input the max number you want to set (current: %d): ", currentMaxNumber);
-        scanf("%d", &maxNumber); // Read max number from user
+        if (scanf("%d", &maxNumber) != 1) { // Read max number from user
+            printf("Invalid number.\n"); // User did not enter a number
+            continue;
+        }
 
-        // Check if input is valid (is not negative or zero)
+        // Check if input is valid (is positive)
         if (maxNumber < 1) {
             printf("Invalid max number (must be positive)\n");
         }
@@ -103,7 +107,7 @@ int guessingGame(int maxNumber) {
         }
         userGuess = atoi(userInput); // Attempt to convert string to integer
         if (userGuess == 0) { // Invalid integer
-            printf("Invalid input.\n");
+            printf("Invalid number.\n");
             continue;
         }
 
